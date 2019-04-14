@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.JoinColumn;
-
 @Controller
 @RequestMapping(path="/owners")
 public class OwnerController {
@@ -17,7 +15,7 @@ public class OwnerController {
 
     @GetMapping(path="/owners/add")
     public @ResponseBody
-    String addNewOwener(@RequestParam String name, @RequestParam String address,
+    String addNewOwner(@RequestParam String name, @RequestParam String address,
                         @RequestParam String city, @RequestParam String telephone){
         Owner owner = new Owner();
         owner.setName(name);

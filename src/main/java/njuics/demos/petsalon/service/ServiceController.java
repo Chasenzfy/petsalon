@@ -1,8 +1,7 @@
 package njuics.demos.petsalon.service;
 
-import njuics.demos.petsalon.owner.Owner;
+
 import njuics.demos.petsalon.pet.Pet;
-import njuics.demos.petsalon.pet.PetType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,7 @@ import java.util.Date;
 @RequestMapping(path="/service")
 public class ServiceController {
     @Autowired
-    private ServiceReposity serviceReposity;
+    private ServiceRepository serviceRepository;
 
     @GetMapping(path="/service/add")
     public @ResponseBody
@@ -28,7 +27,7 @@ public class ServiceController {
         service.setDate(date);
         service.setFee(fee);
         pet.addService(service);
-        serviceReposity.save(service);
+        serviceRepository.save(service);
         return "Add New Service";
     }
 }

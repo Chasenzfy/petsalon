@@ -1,6 +1,5 @@
 package njuics.demos.petsalon.model;
 
-import com.sun.javafx.beans.IDProperty;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;

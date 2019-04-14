@@ -25,13 +25,13 @@ public class Pet extends EntityNamed {
     private Owner owner;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "petId",fetch = FetchType.EAGER)
-    private Set<Service> serices;
+    private Set<Service> services;
 
     protected Set<Service> getServiceInternal() {
-        if (this.serices == null) {
-            this.serices = new HashSet<>();
+        if (this.services == null) {
+            this.services = new HashSet<>();
         }
-        return this.serices;
+        return this.services;
     }
 
     public void addService(Service service) {
