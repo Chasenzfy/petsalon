@@ -4,10 +4,7 @@ import lombok.Data;
 import njuics.demos.petsalon.model.EntityNamed;
 import njuics.demos.petsalon.pet.Pet;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
@@ -29,6 +26,13 @@ public class Owner extends EntityNamed {
     @Digits(fraction = 0, integer = 10)
     private String telephone;
 
+    Owner(){}
+    public Owner(String name,String address,String city,String telephone){
+        this.setName(name);
+        this.setAddress(address);
+        this.setCity(city);
+        this.setTelephone(telephone);
+    }
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
     private Set<Pet> pets;
 
