@@ -1,4 +1,4 @@
 package njuics.demos.petsalon.service;
 
-public class ServiceCategory {
+public enum  ServiceCategory {
 }
