@@ -14,7 +14,6 @@ import java.util.Set;
 @Data
 public class Pet extends EntityNamed {
 
-    @ManyToOne
     @NotEmpty
     @JoinColumn(name = "type_id")
     private PetType type;
