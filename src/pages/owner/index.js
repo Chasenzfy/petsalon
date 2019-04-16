@@ -1,4 +1,6 @@
-import { Table, Divider, Tag } from 'antd';
+import { Table, Divider, Tag,Button } from 'antd';
+import router from 'umi/router';
+
 
 const { Column, ColumnGroup } = Table;
 
@@ -27,6 +29,7 @@ const data = [{
 
 export default function() {
   return(
+    <div>
     <Table dataSource={data}>
       <Column
           title="Name"
@@ -70,6 +73,11 @@ export default function() {
         )}
       />//actions
     </Table>
+        <Button type="primary" onClick={goToAddOwner}>Add New Owner</Button>
+    </div>
   );
 }
 
+function goToAddOwner() {
+  router.push('/owner/add');
+}
