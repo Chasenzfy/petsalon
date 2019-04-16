@@ -1,4 +1,5 @@
-import { Card, Icon, Avatar,List } from 'antd';
+import {Card, Icon, Avatar, List, Button} from 'antd';
+import router from "umi/router";
 
 const { Meta } = Card;
 
@@ -22,6 +23,7 @@ const data = [
 
 export default function() {
   return (
+    <div>
     <List
       dataSource={data}
       grid={{
@@ -39,6 +41,8 @@ export default function() {
       </List.Item>
 )}
   />
+      <Button style={{ marginBottom: 16,marginLeft: 900}} type="primary" icon="user-add" onClick={()=>{router.push("./add")}}>Add New Service</Button>
+    </div>
   );
 }
 
