@@ -69,6 +69,8 @@ export default function() {
           <a href="javascript:">Add Pet for {record.Name}</a>
           <Divider type="vertical"/>
           <a href="javascript:">Delete</a>
+          <Divider type="vertical"/>
+          <a href="javascript:">Modify</a>
         </span>
         )}
       />//actions
