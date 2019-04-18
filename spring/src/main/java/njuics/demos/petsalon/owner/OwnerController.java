@@ -13,7 +13,7 @@ public class OwnerController {
     @Autowired
     private OwnerRepository ownerRepository;
 
-    @GetMapping(path="/owners/add")
+    @GetMapping(path="/add")
     public @ResponseBody
     String addNewOwner(@RequestParam String name, @RequestParam String address,
                         @RequestParam String city, @RequestParam String telephone){
@@ -25,7 +25,7 @@ public class OwnerController {
         ownerRepository.save(owner);
         return "New Owner Saved";
     }
-    @GetMapping(path="/owners/all")
+    @RequestMapping(path="/all")
     public @ResponseBody Iterable<Owner> getAllOwners(){
         return ownerRepository.findAll();
     }

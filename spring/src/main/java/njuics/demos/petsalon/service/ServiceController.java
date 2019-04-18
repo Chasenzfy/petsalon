@@ -18,7 +18,7 @@ public class ServiceController {
     @Autowired
     private ServiceRepository serviceRepository;
 
-    @GetMapping(path="/service/add")
+    @GetMapping(path="/add")
     public @ResponseBody
     String addNewService(Pet pet, @RequestParam String name, @RequestParam Date date,
                                   @RequestParam double fee){

@@ -14,7 +14,7 @@ public class PetController {
     @Autowired
     private PetRepository petRepository;
 
-    @GetMapping(path="/pets/add")
+    @GetMapping(path="/add")
     public @ResponseBody
     String addNewPet(Owner owner,@RequestParam String name,@RequestParam PetType type){
         Pet pet = new Pet();

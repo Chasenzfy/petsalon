@@ -2,6 +2,7 @@ import { Table, Divider, Tag,Button,Popconfirm, message } from 'antd';
 import router from 'umi/router';
 import {connect} from "dva";
 import {Component} from "react";
+import request from '../../util/request';
 
 const { Column, ColumnGroup } = Table;
 
@@ -13,8 +14,10 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-    fetchData: ()=>dispatch({type:"owner/fetchData"})
+    fetchData: ()=>dispatch({type:"owner/fetchData"}),
+    deleteHandler:(id)=>dispatch({ type: 'owner/remove', payload: id,}),
   }
+
 }
 
 @connect(mapStateToProps,mapDispatchToProps)
@@ -29,27 +32,27 @@ class OwnerList extends Component{
         <Table dataSource={data}>
           <Column
             title="Name"
-            dataIndex="Name"
-            key="Name"
+            dataIndex="name"
+            key="name"
           />//name
           <Column
             title="Address"
-            dataIndex="Address"
+            dataIndex="address"
             key="Address"
           />//address
           <Column
             title="City"
-            dataIndex="City"
+            dataIndex="city"
             key="City"
           />//city
           <Column
             title="Telephone"
-            dataIndex="Telephone"
+            dataIndex="telephone"
             key="Telephone"
           />//telephone
           <Column
             title="Pets"
-            dataIndex="Pets"
+            dataIndex="pets"
             key="Pets"
             render={(pets,record) => (
               <span>
@@ -66,7 +69,7 @@ class OwnerList extends Component{
           <Divider type="vertical"/>
           <a href="javascript:" onClick={()=>{router.push("/pet/ownerid/showpets")}}>Show pets</a>
           <Divider type="vertical"/>
-          <Popconfirm title="Are you sure delete this task?" onConfirm={confirm} onCancel={cancel} okText="Yes" cancelText="No">
+          <Popconfirm title="Are you sure delete this task?" onConfirm={this.props.deleteHandler.bind(null,record.id)} onCancel={cancel} okText="Yes" cancelText="No">
              <a href="javascript:">Delete</a>
           </Popconfirm>
           <Divider type="vertical"/>
@@ -102,4 +105,20 @@ function cancel(e) {
   message.error('Cancel');
 }
 
+export function remove(id) {
+  return request(`/api/owner/${id}`,{method: 'DELETE',});
+}
+
+export function create(values) {
+  return request(`/api/owner`,{
+    method: 'POST',
+    body:JSON.stringify(values),});
+}
+
+export function fetch({ page }) {
+  return request(`/api/owner?_page=${page}`);
+}
+
 export default OwnerList;
+
+
